@@ -1,4 +1,5 @@
-console.log("Hey this is for testing script file from another file ")
-alert("These scripts works")
-var username = prompt("Give me your username")
-alert("This scripts works " + username)
+var btnTranslate = document.querySelector("#btn-translate"); // document.querysel is a api call
+
+btnTranslate.addEventListener("click", function clickEventHandler(){
+    console.log("clicked");
+})
