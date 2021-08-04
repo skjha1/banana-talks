@@ -8,7 +8,7 @@ var serverUrl = "https://api.funtranslations.com/translate/minion.json"
 
 // translation function
 function getTranslationURL(text) {
-    return serverUrl + "?" + "text=" + text;
+    return serverUrl + "?" + "text=" + input;
 }
 
 // error handaler function
@@ -18,22 +18,19 @@ function errorHandaler(error){
     alert("Something wrong with server : try again after sometime ")
 }
 
-//console.log(txtInput)
-
-function clickEventHandler() {
-    // outputDiv.innerText = "Banana language " + txtInput.value; // reading output 
+function clickHandler() {
 
     var inputText = txtInput.value; // taking input 
 
-    // calling server for processing 
+    // calling server for processing  // server is processing 
 
     fetch(getTranslationURL(inputText))
         .then(response => response.json())
         .then(json => {
             var translatedText = json.contents.translated;
-            outputDiv.innerText = translatedText;
+            outputDiv.innerText = translatedText; // output 
         })
         .catch(errorHandaler) // handaling error
 
 }
-btnTranslate.addEventListener("click", clickEventHandler)
+btnTranslate.addEventListener("click", clickHandler)
