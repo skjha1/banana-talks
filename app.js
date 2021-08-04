@@ -11,12 +11,15 @@ function getTranslationURL(text) {
 
 // error handaler function
 
-
+function errorHandaler(error){
+    console.log("error occured",error)
+    alert("Something wrong with server : try again after sometime ")
+}
 
 console.log(txtInput)
 
 function clickEventHandler() {
-
+    outputDiv.innerText = "Banana language " + txtInput.value; // reading output 
 
     var inputText = txtInput.value; // taking input 
 
@@ -25,7 +28,7 @@ function clickEventHandler() {
     fetch(getTranslationURL(inputText))
         .then(response => response.json())
         .then(json => console.log(json.contents.translated))
-        
+        .catch(errorHandaler) // handaling error
 
 }
 btnTranslate.addEventListener("click", clickEventHandler)
