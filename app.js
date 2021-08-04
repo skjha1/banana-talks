@@ -2,7 +2,9 @@ var btnTranslate = document.querySelector("#btn-translate"); // document.queryse
 var txtInput = document.querySelector("#txt-input")
 var outputDiv = document.querySelector("#output")
 
-var serverUrl = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json"
+ //var serverUrl = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json"
+
+var serverUrl = "https://api.funtranslations.com/translate/minion.json"
 
 // translation function
 function getTranslationURL(text) {
@@ -16,10 +18,10 @@ function errorHandaler(error){
     alert("Something wrong with server : try again after sometime ")
 }
 
-console.log(txtInput)
+//console.log(txtInput)
 
 function clickEventHandler() {
-    outputDiv.innerText = "Banana language " + txtInput.value; // reading output 
+    // outputDiv.innerText = "Banana language " + txtInput.value; // reading output 
 
     var inputText = txtInput.value; // taking input 
 
@@ -27,7 +29,10 @@ function clickEventHandler() {
 
     fetch(getTranslationURL(inputText))
         .then(response => response.json())
-        .then(json => console.log(json.contents.translated))
+        .then(json => {
+            var translatedText = json.contents.translated;
+            outputDiv.innerText = translatedText;
+        })
         .catch(errorHandaler) // handaling error
 
 }
